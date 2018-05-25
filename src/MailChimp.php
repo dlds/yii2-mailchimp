@@ -5,7 +5,7 @@ namespace dlds\mailchimp;
 use DateTime;
 use yii\base\Component;
 use DrewM\MailChimp\Batch;
-use DrewM\MailChimp\MailChimp;
+use DrewM\MailChimp\MailChimp as MailChimpEngine;
 use dlds\mailchimp\dto\MailChimpBasicUser;
 use dlds\mailchimp\dto\MailChimpBatchResponse;
 use dlds\mailchimp\dto\MailChimpBatchResponseInterface;
@@ -59,7 +59,7 @@ class MailChimp extends Component
                 'Empty MailChimp API key. Please provide valid API key in module configuration.'
             );
         }
-        $this->mailChimpWrapper = new MailChimp($this->apiKey);
+        $this->mailChimpWrapper = new MailChimpEngine($this->apiKey);
     }
 
     /**
@@ -288,7 +288,7 @@ class MailChimp extends Component
             //
             $requestData = [
                 'email_address' => $contact->getEmail(),
-                'status_if_new' => self::USER_STATUS_SUBSCRIBED
+                'status' => $contact->getStatus()
             ];
             if (!empty($contact->getFirstName())) {
                 $requestData['merge_fields']['FNAME'] = $contact->getFirstName();

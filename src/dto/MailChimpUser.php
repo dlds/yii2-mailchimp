@@ -2,19 +2,29 @@
 
 namespace dlds\mailchimp\dto;
 
+use dlds\mailchimp\MailChimp;
+
 class MailChimpUser extends MailChimpBasicUser implements MailChimpUserInterface
 {
     private $firstName;
     private $lastName;
     private $language;
+    private $status;
     private $membershipGroups;
 
-    public function __construct($email, $firstName, $lastName, $language, array $membershipGroups = null)
-    {
+    public function __construct(
+        $email,
+        $firstName,
+        $lastName,
+        $language,
+        array $membershipGroups = null,
+        $status = MailChimp::USER_STATUS_SUBSCRIBED
+    ) {
         parent::__construct($email);
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->language = $language;
+        $this->status = $status;
         $this->membershipGroups = $membershipGroups;
     }
 
@@ -57,4 +67,21 @@ class MailChimpUser extends MailChimpBasicUser implements MailChimpUserInterface
     {
         $this->membershipGroups = $membershipGroups;
     }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
 }
