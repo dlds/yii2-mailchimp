@@ -11,7 +11,7 @@ use dlds\mailchimp\dto\MailChimpBatchResponse;
 use dlds\mailchimp\dto\MailChimpBatchResponseInterface;
 use dlds\mailchimp\dto\MailChimpUserInterface;
 
-class YcMailChimp extends Component
+class MailChimp extends Component
 {
     const USER_STATUS_SUBSCRIBED = 'subscribed';
     const USER_STATUS_UNSUBSCRIBED = 'unsubscribed';

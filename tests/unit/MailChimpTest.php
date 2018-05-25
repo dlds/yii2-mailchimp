@@ -3,7 +3,7 @@
 use Codeception\Specify;
 use Codeception\Stub;
 use DrewM\MailChimp\Batch;
-use dlds\mailchimp\YcMailChimp;
+use dlds\mailchimp\MailChimp;
 use dlds\mailchimp\MailChimpException;
 use dlds\mailchimp\MailChimpResult;
 use dlds\mailchimp\dto\MailChimpUser;
@@ -22,7 +22,7 @@ class MailChimpTest extends \Codeception\Test\Unit
     protected $tester;
 
     /**
-     * @var YcMailChimp $chimp
+     * @var MailChimp $chimp
      */
     protected $chimp;
 
@@ -214,8 +214,8 @@ class MailChimpTest extends \Codeception\Test\Unit
             // verify request parameters
             verify($path)->equals('lists/' . $this->chimp->listId . '/members');
             $this->assertTrue(isset($args['status']));
-            verify($args['status'])->equals([YcMailChimp::USER_STATUS_UNSUBSCRIBED, YcMailChimp::USER_STATUS_CLEANED]);
-            verify($args['since_last_changed'])->equals($sinceLastChanged->format(YcMailChimp::DATE_FORMAT));
+            verify($args['status'])->equals([MailChimp::USER_STATUS_UNSUBSCRIBED, MailChimp::USER_STATUS_CLEANED]);
+            verify($args['since_last_changed'])->equals($sinceLastChanged->format(MailChimp::DATE_FORMAT));
             verify($args['count'])->equals($this->chimp->recordsPerResponse);
             verify($args['offset'])->equals($offset);
 
