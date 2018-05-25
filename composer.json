@@ -1,0 +1,23 @@
+{
+    "name": "dlds/yii2-mailchimp",
+    "description": "MailChimp integration for YeahCoach project",
+    "type": "yii2-extension",
+    "require": {
+        "drewm/mailchimp-api": "~2.5"
+    },
+    "require-dev": {
+        "yiisoft/yii2": "~2.0.15",
+        "codeception/codeception": "2.4.0",
+        "codeception/verify": "1.0.0",
+        "codeception/specify": "1.0",
+        "phpmd/phpmd": "2.6.0",
+        "squizlabs/php_codesniffer": "3.2.3"
+    },
+    "license": "BSD-3-Clause",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "dlds\\mailchimp\\": "src"
+        }
+    }
+}

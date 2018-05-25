@@ -1,6 +1,11 @@
-assets/*
-!assets/.gitignore
-protected/runtime/*
-!protected/runtime/.gitignore
-protected/data/*.db
-themes/classic/views/
+# IDE files
+.idea
+
+# vendor files
+vendor
+
+# app files
+*-local.php
+
+# codeception files
+tests/_output/*
